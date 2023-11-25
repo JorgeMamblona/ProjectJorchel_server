@@ -1,6 +1,6 @@
 const Project = require("../models/Project.model")
 
-//List all projects ----> NOT TESTED YET
+//List all projects 
 const getAllProjects = (req, res, next) => {
     Project
         .find()
@@ -8,7 +8,7 @@ const getAllProjects = (req, res, next) => {
         .catch(err => next(err))
 }
 
-//list projects owned by user
+//list projects owned by user > NOT TESTED YET
 
 const getAllOwnedProjects = (req, res, next) => {
 

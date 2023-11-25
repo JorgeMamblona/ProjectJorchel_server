@@ -1,7 +1,10 @@
 const User = require("../models/User.model")
 
+const jwt = require("jsonwebtoken")
+
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
+
 
 //create new User
 const signupHandler = (req, res, next) => {
@@ -36,6 +39,56 @@ const signupHandler = (req, res, next) => {
 }
 
 
+//User login 
+const userLoginHandler = (req, res, next) => {
+
+    const { email, password } = req.body
+
+    if (email === '' || password === '') {
+        res.status(400).json({ message: 'Please, insert email and password' })
+        return
+    }
+
+    User
+        .findOne({ email })
+        .then(foundUser => {
+
+            if (!foundUser) {
+                res.status(400).json({ message: 'User not found' })
+                return
+            }
+
+            if (bcrypt.compareSync(password, foundUser.password)) {
+
+                const { _id, email, username } = foundUser
+                const payload = { _id, email, username }
+
+                const authToken = jwt.sign(
+                    payload,
+                    process.env.TOKEN_SECRET,
+                    { algorithm: 'HS256', expiresIn: '6h' }
+                )
+
+                res.json({ authToken })
+
+            } else {
+                res.status(401)({ message: 'Incorrect password' })
+            }
+        })
+        .catch(err => next(err))
+
+}
+
+//get user after verify
+const LoggedUserHandler = (req, res, next) => {
+
+    const loggedUser = req.payload
+
+    res.json({ loggedUser })
+}
+
 module.exports = {
-    signupHandler
+    signupHandler,
+    userLoginHandler,
+    LoggedUserHandler
 }
