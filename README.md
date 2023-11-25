@@ -93,17 +93,17 @@ ServerSide
     </tr>
     <tr>
       <td>GET</td>
-      <td><code>/:project_id</code></td>
+      <td><code>/:task_id</code></td>
       <td>Detalles de la tarea</td>
     </tr>
     <tr>
       <td>PUT</td>
-      <td><code>/:project_id/edit</code></td>
+      <td><code>/:task_id/edit</code></td>
       <td>Editar tarea</td>
     </tr>
     <tr>
       <td>DELETE</td>
-      <td><code>/:project_id/delete</code></td>
+      <td><code>/:task_id/delete</code></td>
       <td>Eliminar tarea</td>
     </tr>
   </tbody>
