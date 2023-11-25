@@ -14,24 +14,23 @@ const projectSchema = new Schema({
         type: String,
         default: ''
     },
-    states: {
+    state: {
         type: String,
         enum: ['ToDo', 'OnGoing', 'Review', 'Done'],
         default: 'ToDo'
     },
     startDate: {
         type: Date,
-        required: [true, 'Project must have a starting date']
+        default: Date.now
     },
     endDate: {
-        type: Date,
-        required: [true, 'Project must have an ending date']
+        type: Date
     },
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    participants: {
+    colaborators: {
         type: [Schema.Types.ObjectId],
         ref: 'User'
     }
