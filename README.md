@@ -47,6 +47,11 @@ ServerSide
       <td>Ver todos los proyectos</td>
     </tr>
     <tr>
+      <td>GET</td>
+      <td><code>/getOwnedProjects</code></td>
+      <td>Ver todos los proyectos</td>
+    </tr>
+    <tr>
       <td>POST</td>
       <td><code>/create</code></td>
       <td>Crear proyecto</td>
