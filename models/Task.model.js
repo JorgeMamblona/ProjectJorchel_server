@@ -27,10 +27,10 @@ const taskSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    participants: {
-        type: [Schema.Types.ObjectId],
+    participants: [{
+        type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }]
 },
     {
         timestamps: true

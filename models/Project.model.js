@@ -30,10 +30,10 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    colaborators: {
-        type: [Schema.Types.ObjectId],
+    colaborators: [{
+        type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }]
 },
     {
         timestamps: true
