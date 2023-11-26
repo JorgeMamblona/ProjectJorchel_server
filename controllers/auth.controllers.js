@@ -85,6 +85,7 @@ const LoggedUserHandler = (req, res, next) => {
     const loggedUser = req.payload
 
     res.json({ loggedUser })
+
 }
 
 module.exports = {
