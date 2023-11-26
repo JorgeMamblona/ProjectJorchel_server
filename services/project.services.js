@@ -6,6 +6,10 @@ class ProjectService {
         })
     }
 
+    getAllProyects() {
+        //return this.axiosApp.get()
+    }
+
 
 }
 
