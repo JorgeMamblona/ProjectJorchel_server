@@ -6,4 +6,8 @@ class ProjectService {
         })
     }
 
+
 }
+
+const projectService = new ProjectService()
+exports.module = projectService
