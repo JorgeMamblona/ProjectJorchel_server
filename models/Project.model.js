@@ -16,8 +16,8 @@ const projectSchema = new Schema({
     },
     state: {
         type: String,
-        enum: ['ToDo', 'OnGoing', 'Review', 'Done'],
-        default: 'ToDo'
+        enum: ['TODO', 'ONGOING', 'REVIEW', 'DONE'],
+        default: 'TODO'
     },
     startDate: {
         type: Date,

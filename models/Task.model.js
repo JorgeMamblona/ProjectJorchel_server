@@ -10,7 +10,7 @@ const taskSchema = new Schema({
         type: String,
         required: [true, 'Task must have a description']
     },
-    states: {
+    state: {
         type: String,
         enum: ['ToDo', 'OnGoing', 'Review', 'Done'],
         default: 'ToDo'
