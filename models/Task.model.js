@@ -12,8 +12,8 @@ const taskSchema = new Schema({
     },
     state: {
         type: String,
-        enum: ['ToDo', 'OnGoing', 'Review', 'Done'],
-        default: 'ToDo'
+        enum: ['TODO', 'ONGOING', 'REVIEW', 'DONE'],
+        default: 'TODO'
     },
     startDate: {
         type: Date,
@@ -26,6 +26,10 @@ const taskSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    project: {
+        type: Schema.Types.ObjectId,
+        ref: 'Project'
     },
     participants: [{
         type: Schema.Types.ObjectId,
