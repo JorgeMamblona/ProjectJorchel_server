@@ -16,7 +16,7 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Username is required']
     },
-    image: {
+    avatar: {
         type: String,
         default: ''
     },
