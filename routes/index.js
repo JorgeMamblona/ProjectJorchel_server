@@ -5,4 +5,7 @@ module.exports = app => {
 
     const projectsRoutes = require('./project.routes')
     app.use('/api/projects', projectsRoutes)
+
+    const tasksRoutes = require('./task.routes')
+    app.use('/api/tasks', tasksRoutes)
 }
