@@ -12,6 +12,7 @@ const listAllUsersHandler = (req, res, next) => {
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
 
+
 }
 module.exports = {
     listAllUsersHandler
