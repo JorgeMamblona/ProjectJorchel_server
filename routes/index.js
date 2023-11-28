@@ -12,5 +12,6 @@ module.exports = app => {
     const tasksRoutes = require('./task.routes')
     app.use('/api/tasks', tasksRoutes)
 
-
+    const uploadRoutes = require('./upload.routes')
+    app.use('/api/upload', uploadRoutes)
 }
