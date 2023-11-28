@@ -10,14 +10,16 @@ const getAllProjects = (req, res, next) => {
 
 //list projects owned by user > NOT TESTED YET
 
-const getAllOwnedProjects = (req, res, next) => {
+const getOwnedProjects = (req, res, next) => {
 
-    let { owner } = req.params
-    owner = '6561eb5acdb9b8906f93290a'// ---------------------->CHANGE AFER FRONT
+    const { owner } = req.body
 
     Project
         .find({ owner })
-        .then(response => res.status(200).json(response))
+        .then(response => {
+
+            res.status(200).json(response)
+        })
         .catch(err => next(err))
 }
 
@@ -106,7 +108,7 @@ const projectDeleteHandler = (req, res, next) => {
 
 module.exports = {
     getAllProjects,
-    getAllOwnedProjects,
+    getOwnedProjects,
     projectDetailshandler,
     projectCreateHandler,
     projectEditHandler,

@@ -2,7 +2,7 @@ const router = require("express").Router()
 
 const {
     getAllProjects,
-    getAllOwnedProjects,
+    getOwnedProjects,
     projectDetailshandler,
     projectCreateHandler,
     projectEditHandler,
@@ -12,7 +12,7 @@ const {
 
 router.get("/getAllProjects", getAllProjects)
 
-router.get("/getOwnedProjects", getAllOwnedProjects)
+router.post("/getOwnedProjects", getOwnedProjects)
 
 router.post("/create", projectCreateHandler)
 
