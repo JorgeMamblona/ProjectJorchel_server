@@ -2,7 +2,7 @@ const router = require("express").Router()
 
 const {
     getAllTasks,
-    getProjectTasks,
+    getProjectTasksByState,
     getOwnedTasks,
     taskCreateHandler,
     tasksDetailsHandler,
@@ -12,7 +12,7 @@ const {
 
 router.get('/getAllTasks', getAllTasks)
 
-router.get('/getProjectTasks', getProjectTasks)
+router.post('/getProjectTasksByState', getProjectTasksByState)
 
 router.get('/getOwnedTasks', getOwnedTasks)
 
