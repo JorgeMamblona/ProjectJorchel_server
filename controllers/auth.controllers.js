@@ -8,7 +8,7 @@ const saltRounds = 10
 
 //create new User
 const signupHandler = (req, res, next) => {
-    const { email, password, username, image } = req.body
+    const { email, password, username, avatar } = req.body
 
     if (password.length < 2) {
         res.status(400).json({ message: 'Password must have at least 3 characters' })
@@ -31,7 +31,7 @@ const signupHandler = (req, res, next) => {
                 email,
                 password: hashedPassword,
                 username,
-                image
+                avatar
             })
         })
         .then(() => res.sendStatus(201))

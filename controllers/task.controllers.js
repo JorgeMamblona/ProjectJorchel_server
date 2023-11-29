@@ -11,21 +11,24 @@ const getAllTasks = (req, res, next) => {
 
 const getOwnedTasks = (req, res, next) => {
     let { owner } = req.params
-    owner = '6561eb5acdb9b8906f93290a'
+
     Task
         .find({ owner })
         .then(response => res.json(response))
         .catch(err => next(err))
 }
 
-const getProjectTasks = (req, res, next) => {
-    let { project } = req.params
-    project = '656203ee8c584c6c578b5ae2'
+const getProjectTasksByState = (req, res, next) => {
+    let { project_id: project, state } = req.body
 
     Task
-        .find({ project })
+        .find({ $and: [{ project: project }, { state: state }] })
         .then(response => res.json(response))
         .catch(err => next(err))
+
+
+
+
 
 }
 
@@ -103,7 +106,7 @@ const taskDeleteHandler = (req, res, next) => {
 
 module.exports = {
     getAllTasks,
-    getProjectTasks,
+    getProjectTasksByState,
     getOwnedTasks,
     taskCreateHandler,
     tasksDetailsHandler,
