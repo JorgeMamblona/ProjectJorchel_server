@@ -14,5 +14,4 @@ const verifyToken = expressjwt({
     getToken: getTokenFromHeaders
 })
 
-
 module.exports = { verifyToken }

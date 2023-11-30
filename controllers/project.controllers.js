@@ -1,5 +1,6 @@
 const Project = require("../models/Project.model")
 
+
 //List all projects 
 const getAllProjects = (req, res, next) => {
     Project
@@ -8,20 +9,18 @@ const getAllProjects = (req, res, next) => {
         .catch(err => next(err))
 }
 
-//list projects owned by user > NOT TESTED YET
 
+//Lisit owned projects
 const getOwnedProjects = (req, res, next) => {
 
     const { owner } = req.body
 
     Project
         .find({ owner })
-        .then(response => {
-
-            res.status(200).json(response)
-        })
+        .then(response => res.status(200).json(response))
         .catch(err => next(err))
 }
+
 
 //Create new Project
 const projectCreateHandler = (req, res, next) => {
@@ -62,6 +61,7 @@ const projectDetailshandler = (req, res, next) => {
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
 }
+
 
 const projectEditHandler = (req, res, next) => {
 

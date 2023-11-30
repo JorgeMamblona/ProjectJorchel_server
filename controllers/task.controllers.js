@@ -1,15 +1,17 @@
-const { response } = require('express')
 const Task = require('./../models/Task.model')
 
+
 const getAllTasks = (req, res, next) => {
+
     Task
         .find()
         .then(response => res.json(response))
         .catch(err => next(err))
-
 }
 
+
 const getOwnedTasks = (req, res, next) => {
+
     let { owner } = req.params
 
     Task
@@ -18,21 +20,20 @@ const getOwnedTasks = (req, res, next) => {
         .catch(err => next(err))
 }
 
+
 const getProjectTasksByState = (req, res, next) => {
+
     let { project_id: project, state } = req.body
 
     Task
         .find({ $and: [{ project: project }, { state: state }] })
         .then(response => res.json(response))
         .catch(err => next(err))
-
-
-
-
-
 }
 
+
 const taskCreateHandler = (req, res, next) => {
+
     const {
         title,
         description,
@@ -42,6 +43,7 @@ const taskCreateHandler = (req, res, next) => {
         owner,
         project,
         participants } = req.body
+
     Task
         .create({
             title,
@@ -58,7 +60,9 @@ const taskCreateHandler = (req, res, next) => {
 }
 
 const tasksDetailsHandler = (req, res, next) => {
+
     const { task_id } = req.params
+
     Task
         .findById(task_id)
         .then(reponse => res.status(201).json(reponse))
@@ -66,7 +70,9 @@ const tasksDetailsHandler = (req, res, next) => {
 }
 
 const taskEditHandler = (req, res, next) => {
+
     const { task_id } = req.params
+
     const {
         title,
         description,
@@ -77,6 +83,7 @@ const taskEditHandler = (req, res, next) => {
         project,
         participants
     } = req.body
+
     Task
         .findByIdAndUpdate(task_id,
             {
@@ -88,21 +95,21 @@ const taskEditHandler = (req, res, next) => {
                 owner,
                 project,
                 participants
-
             })
         .then(() => res.sendStatus(200))
         .catch(err => next(err))
 }
 
+
 const taskDeleteHandler = (req, res, next) => {
+
     const { task_id } = req.params
+
     Task
         .findByIdAndDelete(task_id)
         .then(() => res.sendStatus(200))
         .catch(err => next(err))
 }
-
-
 
 module.exports = {
     getAllTasks,
@@ -112,5 +119,4 @@ module.exports = {
     tasksDetailsHandler,
     taskEditHandler,
     taskDeleteHandler
-
 }

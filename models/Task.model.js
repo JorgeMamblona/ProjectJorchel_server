@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose")
 
 const taskSchema = new Schema({
+
     title: {
         type: String,
         required: [true, 'Task must hace a title'],

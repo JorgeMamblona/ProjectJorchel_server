@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose")
 
 const projectSchema = new Schema({
+
     title: {
         type: String,
         required: [true, 'Project must hace a title'],
