@@ -3,16 +3,16 @@ const router = require("express").Router()
 const { verifyToken } = require('../middleware/verifyToken')
 
 const {
-    signupHandler,
-    userLoginHandler,
-    LoggedUserHandler
+    signup,
+    userLogin,
+    LoggedUser
 } = require('../controllers/auth.controllers')
 
-router.post('/sign-up', signupHandler)
+router.post('/sign-up', signup)
 
-router.post('/log-in', userLoginHandler)
+router.post('/log-in', userLogin)
 
-router.get('/verify', verifyToken, LoggedUserHandler)
+router.get('/verify', verifyToken, LoggedUser)
 
 
 module.exports = router

@@ -1,26 +1,28 @@
 const router = require("express").Router()
 
+const { verifyToken } = require('../middleware/verifyToken')
+
 const {
     getAllProjects,
     getOwnedProjects,
-    projectDetailshandler,
-    projectCreateHandler,
-    projectEditHandler,
-    projectDeleteHandler
+    projectDetails,
+    projectCreate,
+    projectEdit,
+    projectDelete
 } = require("../controllers/project.controllers")
 
 
 router.get("/getAllProjects", getAllProjects)
 
-router.post("/getOwnedProjects", getOwnedProjects)
+router.get("/getOwnedProjects", verifyToken, getOwnedProjects)
 
-router.post("/create", projectCreateHandler)
+router.post("/create", verifyToken, projectCreate)
 
-router.get("/:project_id", projectDetailshandler)
+router.get("/:project_id", projectDetails)
 
-router.put("/:project_id/edit", projectEditHandler)
+router.put("/:project_id/edit", projectEdit)
 
-router.delete("/:project_id/delete", projectDeleteHandler)
+router.delete("/:project_id/delete", projectDelete)
 
 
 module.exports = router

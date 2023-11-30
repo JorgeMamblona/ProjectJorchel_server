@@ -14,7 +14,7 @@ const getAllProjects = (req, res, next) => {
 //Lisit owned projects
 const getOwnedProjects = (req, res, next) => {
 
-    const { owner } = req.body
+    const { _id: owner } = req.payload
 
     Project
         .find({ owner })
@@ -24,7 +24,9 @@ const getOwnedProjects = (req, res, next) => {
 
 
 //Create new Project
-const projectCreateHandler = (req, res, next) => {
+const projectCreate = (req, res, next) => {
+
+    const { _id: owner } = req.payload
 
     const {
         title,
@@ -33,7 +35,6 @@ const projectCreateHandler = (req, res, next) => {
         state,
         startDate,
         endDate,
-        owner,
         colaborators
     } = req.body
 
@@ -53,7 +54,7 @@ const projectCreateHandler = (req, res, next) => {
 }
 
 
-const projectDetailshandler = (req, res, next) => {
+const projectDetails = (req, res, next) => {
 
     const { project_id } = req.params
 
@@ -64,7 +65,7 @@ const projectDetailshandler = (req, res, next) => {
 }
 
 
-const projectEditHandler = (req, res, next) => {
+const projectEdit = (req, res, next) => {
 
     const { project_id } = req.params
     const {
@@ -97,7 +98,7 @@ const projectEditHandler = (req, res, next) => {
 }
 
 
-const projectDeleteHandler = (req, res, next) => {
+const projectDelete = (req, res, next) => {
 
     const { project_id } = req.params
 
@@ -110,8 +111,8 @@ const projectDeleteHandler = (req, res, next) => {
 module.exports = {
     getAllProjects,
     getOwnedProjects,
-    projectDetailshandler,
-    projectCreateHandler,
-    projectEditHandler,
-    projectDeleteHandler
+    projectDetails,
+    projectCreate,
+    projectEdit,
+    projectDelete
 }
