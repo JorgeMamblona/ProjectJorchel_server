@@ -67,7 +67,8 @@ const projectDetails = (req, res, next) => {
 
 const projectEdit = (req, res, next) => {
 
-    const { project_id } = req.params
+    const { project_id } = req.body
+
     const {
         title,
         description,
@@ -93,7 +94,7 @@ const projectEdit = (req, res, next) => {
                 colaborators
             }
         )
-        .then(() => res.sendStatus(200))
+        .then(() => res.status(200).json(response))
         .catch(err => next(err))
 }
 
