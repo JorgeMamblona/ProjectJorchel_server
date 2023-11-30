@@ -1,5 +1,6 @@
 const Project = require("../models/Project.model")
 
+// TODO: REVISAR OPORTUNIDADES DE SELECT Y SORT
 
 //List all projects 
 const getAllProjects = (req, res, next) => {

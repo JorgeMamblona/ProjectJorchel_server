@@ -11,8 +11,6 @@ const listAllUsersHandler = (req, res, next) => {
         .select({ username: 1, image: 1 })
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
-
-
 }
 
 const lisUsersByIdHandler = (req, res, next) => {
@@ -24,8 +22,6 @@ const lisUsersByIdHandler = (req, res, next) => {
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
 }
-
-
 
 
 module.exports = {

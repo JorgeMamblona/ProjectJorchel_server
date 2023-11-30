@@ -9,10 +9,11 @@ const getAllTasks = (req, res, next) => {
         .catch(err => next(err))
 }
 
-
+// TODO: RECOGER EL ID DEL USUARIO LOGUEADO SIEMPRE DE REQ.PAYLOAD
 const getOwnedTasks = (req, res, next) => {
 
     let { owner } = req.params
+    // const {_id: owner } = req.payload
 
     Task
         .find({ owner })
@@ -26,7 +27,7 @@ const getProjectTasksByState = (req, res, next) => {
     let { project_id: project, state } = req.body
 
     Task
-        .find({ $and: [{ project: project }, { state: state }] })
+        .find({ $and: [{ project }, { state }] })
         .then(response => res.json(response))
         .catch(err => next(err))
 }
