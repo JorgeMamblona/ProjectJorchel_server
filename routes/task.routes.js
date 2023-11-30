@@ -1,15 +1,15 @@
 const router = require("express").Router()
 
-import { verifyToken } from "../middleware/verifyToken"
+const { verifyToken } = require('../middleware/verifyToken')
 
 const {
     getAllTasks,
     getProjectTasksByState,
     getOwnedTasks,
-    taskCreateHandler,
-    tasksDetailsHandler,
-    taskEditHandler,
-    taskDeleteHandler
+    taskCreate,
+    tasksDetails,
+    taskEdit,
+    taskDelete
 } = require('./../controllers/task.controllers')
 
 router.get('/getAllTasks', getAllTasks)
@@ -18,13 +18,13 @@ router.post('/getProjectTasksByState', getProjectTasksByState)
 
 router.get('/getOwnedTasks', verifyToken, getOwnedTasks)
 
-router.post('/create', taskCreateHandler)
+router.post('/create', verifyToken, taskCreate)
 
-router.get('/:task_id', tasksDetailsHandler)
+router.get('/:task_id', tasksDetails)
 
-router.put('/:task_id/edit', taskEditHandler)
+router.put('/:task_id/edit', taskEdit)
 
-router.delete('/:task_id/delete', taskDeleteHandler)
+router.delete('/:task_id/delete', taskDelete)
 
 
 module.exports = router

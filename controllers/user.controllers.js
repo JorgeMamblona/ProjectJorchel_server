@@ -1,7 +1,7 @@
 const User = require("../models/User.model")
 
 
-const listAllUsersHandler = (req, res, next) => {
+const listAllUsers = (req, res, next) => {
 
     const { userToFind } = req.body
 
@@ -13,7 +13,7 @@ const listAllUsersHandler = (req, res, next) => {
         .catch(err => next(err))
 }
 
-const lisUsersByIdHandler = (req, res, next) => {
+const lisUsersById = (req, res, next) => {
 
     const { participants } = req.body
 
@@ -25,6 +25,6 @@ const lisUsersByIdHandler = (req, res, next) => {
 
 
 module.exports = {
-    listAllUsersHandler,
-    lisUsersByIdHandler
+    listAllUsers,
+    lisUsersById
 }

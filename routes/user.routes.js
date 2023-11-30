@@ -1,16 +1,14 @@
 const router = require("express").Router()
 
-// TODO: RENOMINAR CONTROLADORES
-
 const {
-    listAllUsersHandler,
-    lisUsersByIdHandler
+    listAllUsers,
+    lisUsersById
 } = require("../controllers/user.controllers")
 
 
-router.post('/listAllUsers', listAllUsersHandler)
+router.post('/listAllUsers', listAllUsers)
 
-router.post('/listUsersById', lisUsersByIdHandler)
+router.post('/listUsersById', lisUsersById)
 
 
 module.exports = router

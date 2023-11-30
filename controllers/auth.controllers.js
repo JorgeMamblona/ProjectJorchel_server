@@ -7,7 +7,7 @@ const saltRounds = 10
 
 
 //create new User
-const signupHandler = (req, res, next) => {
+const signup = (req, res, next) => {
 
     const { email, password, username, avatar } = req.body
 
@@ -42,7 +42,7 @@ const signupHandler = (req, res, next) => {
 
 
 //User login 
-const userLoginHandler = (req, res, next) => {
+const userLogin = (req, res, next) => {
 
     const { email, password } = req.body
 
@@ -83,7 +83,7 @@ const userLoginHandler = (req, res, next) => {
 
 
 //get user after verify
-const LoggedUserHandler = (req, res, next) => {
+const LoggedUser = (req, res, next) => {
 
     const loggedUser = req.payload
 
@@ -91,7 +91,7 @@ const LoggedUserHandler = (req, res, next) => {
 }
 
 module.exports = {
-    signupHandler,
-    userLoginHandler,
-    LoggedUserHandler
+    signup,
+    userLogin,
+    LoggedUser
 }

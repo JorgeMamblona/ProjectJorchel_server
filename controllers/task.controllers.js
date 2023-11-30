@@ -9,11 +9,10 @@ const getAllTasks = (req, res, next) => {
         .catch(err => next(err))
 }
 
-// TODO: RECOGER EL ID DEL USUARIO LOGUEADO SIEMPRE DE REQ.PAYLOAD
+
 const getOwnedTasks = (req, res, next) => {
 
-    let { owner } = req.params
-    // const {_id: owner } = req.payload
+    const { _id: owner } = req.payload
 
     Task
         .find({ owner })
@@ -33,7 +32,9 @@ const getProjectTasksByState = (req, res, next) => {
 }
 
 
-const taskCreateHandler = (req, res, next) => {
+const taskCreate = (req, res, next) => {
+
+    const { _id: owner } = req.payload
 
     const {
         title,
@@ -41,7 +42,6 @@ const taskCreateHandler = (req, res, next) => {
         state,
         startDate,
         endDate,
-        owner,
         project,
         participants } = req.body
 
@@ -60,7 +60,7 @@ const taskCreateHandler = (req, res, next) => {
         .catch(err => next(err))
 }
 
-const tasksDetailsHandler = (req, res, next) => {
+const tasksDetails = (req, res, next) => {
 
     const { task_id } = req.params
 
@@ -70,7 +70,7 @@ const tasksDetailsHandler = (req, res, next) => {
         .catch(err => next(err))
 }
 
-const taskEditHandler = (req, res, next) => {
+const taskEdit = (req, res, next) => {
 
     const { task_id } = req.params
 
@@ -102,7 +102,7 @@ const taskEditHandler = (req, res, next) => {
 }
 
 
-const taskDeleteHandler = (req, res, next) => {
+const taskDelete = (req, res, next) => {
 
     const { task_id } = req.params
 
@@ -116,8 +116,8 @@ module.exports = {
     getAllTasks,
     getProjectTasksByState,
     getOwnedTasks,
-    taskCreateHandler,
-    tasksDetailsHandler,
-    taskEditHandler,
-    taskDeleteHandler
+    taskCreate,
+    tasksDetails,
+    taskEdit,
+    taskDelete
 }
