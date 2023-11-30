@@ -1,5 +1,7 @@
 const router = require("express").Router()
 
+import { verifyToken } from "../middleware/verifyToken"
+
 const {
     getAllTasks,
     getProjectTasksByState,
@@ -14,7 +16,7 @@ router.get('/getAllTasks', getAllTasks)
 
 router.post('/getProjectTasksByState', getProjectTasksByState)
 
-router.get('/getOwnedTasks', getOwnedTasks)
+router.get('/getOwnedTasks', verifyToken, getOwnedTasks)
 
 router.post('/create', taskCreateHandler)
 
