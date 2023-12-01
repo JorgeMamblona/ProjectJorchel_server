@@ -94,7 +94,7 @@ const projectEdit = (req, res, next) => {
                 colaborators
             }
         )
-        .then(() => res.status(200).json(response))
+        .then(() => res.sendStatus(200))
         .catch(err => next(err))
 }
 
