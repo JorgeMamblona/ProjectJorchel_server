@@ -16,6 +16,7 @@ const getOwnedTasks = (req, res, next) => {
 
     Task
         .find({ owner })
+        .sort({ state: -1 })
         .then(response => res.json(response))
         .catch(err => next(err))
 }

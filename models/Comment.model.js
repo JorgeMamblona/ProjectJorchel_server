@@ -8,7 +8,13 @@ const commentSchema = new Schema({
     },
     parent: {
         type: Schema.Types.ObjectId,
-        ref: ['Task', 'Project']
+        required: true,
+        refPath: 'scope'
+    },
+    scope: {
+        type: String,
+        required: true,
+        enum: ['Project', 'Task']
     },
     content: {
         type: String,
