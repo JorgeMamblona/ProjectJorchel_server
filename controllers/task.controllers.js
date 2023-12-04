@@ -16,6 +16,7 @@ const getOwnedTasks = (req, res, next) => {
 
     Task
         .find({ owner })
+        .populate('participants')
         .sort({ state: -1 })
         .then(response => res.json(response))
         .catch(err => next(err))

@@ -23,8 +23,8 @@ const create = (req, res, next) => {
 
 const getProjectComments = (req, res, next) => {
 
-    const { project_id: parent } = req.body
-
+    const { parent } = req.body
+    console.log(parent)
     Comment
         .find({ parent })
         .then(response => res.json(response))
