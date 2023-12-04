@@ -67,7 +67,7 @@ const projectDetails = (req, res, next) => {
 
 const projectEdit = (req, res, next) => {
 
-    const { project_id } = req.body
+    const { _id } = req.body
 
     const {
         title,
@@ -82,7 +82,7 @@ const projectEdit = (req, res, next) => {
 
     Project
         .findByIdAndUpdate(
-            project_id,
+            _id,
             {
                 title,
                 description,
