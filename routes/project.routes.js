@@ -8,13 +8,16 @@ const {
     projectDetails,
     projectCreate,
     projectEdit,
-    projectDelete
+    projectDelete,
+    getMyProjects
 } = require("../controllers/project.controllers")
 
 
 router.get("/getAllProjects", getAllProjects)
 
 router.get("/getOwnedProjects", verifyToken, getOwnedProjects)
+
+router.get("/getMyProjects", verifyToken, getMyProjects)
 
 router.post("/create", verifyToken, projectCreate)
 
