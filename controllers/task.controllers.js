@@ -68,6 +68,9 @@ const tasksDetails = (req, res, next) => {
 
     Task
         .findById(task_id)
+        .populate("project")
+        .populate("owner")
+        .populate("participants")
         .then(reponse => res.status(200).json(reponse))
         .catch(err => next(err))
 }
