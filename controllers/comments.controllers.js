@@ -21,7 +21,7 @@ const create = (req, res, next) => {
         .catch(err => console.log(err))
 }
 
-const getProjectComments = (req, res, next) => {
+const getParentComments = (req, res, next) => {
 
     const { parent } = req.body
     console.log(parent)
@@ -34,5 +34,5 @@ const getProjectComments = (req, res, next) => {
 
 module.exports = {
     create,
-    getProjectComments
+    getParentComments
 }
