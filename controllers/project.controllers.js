@@ -109,11 +109,23 @@ const projectDelete = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const getMyProjects = (req, res, next) => {
+    const { _id: user } = req.payload
+
+    Project
+        .find({ colaborators: user })
+        .sort({ title: 1 })
+        .then(response => res.status(200).json(response))
+        .catch(err => next(err))
+
+}
+
 module.exports = {
     getAllProjects,
     getOwnedProjects,
     projectDetails,
     projectCreate,
     projectEdit,
-    projectDelete
+    projectDelete,
+    getMyProjects
 }

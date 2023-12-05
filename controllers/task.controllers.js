@@ -114,6 +114,18 @@ const taskDelete = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const getMyTasks = (req, res, next) => {
+
+    const { _id: user } = req.payload
+
+    Task
+        .find({ participants: user })
+        .sort({ title: 1 })
+        .then(response => res.status(200).json(response))
+        .catch(err => next(err))
+
+}
+
 module.exports = {
     getAllTasks,
     getProjectTasksByState,
@@ -121,5 +133,6 @@ module.exports = {
     taskCreate,
     tasksDetails,
     taskEdit,
-    taskDelete
+    taskDelete,
+    getMyTasks
 }

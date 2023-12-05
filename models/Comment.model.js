@@ -19,7 +19,7 @@ const commentSchema = new Schema({
     content: {
         type: String,
         required: true,
-        minlength: [10, 'Mínimo 10 caracteres']
+        minlength: [2, 'Mínimo 2 caracteres']
     },
 
 },

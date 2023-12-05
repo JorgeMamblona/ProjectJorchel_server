@@ -9,7 +9,8 @@ const {
     taskCreate,
     tasksDetails,
     taskEdit,
-    taskDelete
+    taskDelete,
+    getMyTasks
 } = require('./../controllers/task.controllers')
 
 router.get('/getAllTasks', getAllTasks)
@@ -17,6 +18,8 @@ router.get('/getAllTasks', getAllTasks)
 router.post('/getProjectTasksByState', getProjectTasksByState)
 
 router.get('/getOwnedTasks', verifyToken, getOwnedTasks)
+
+router.get('/getMyTasks', verifyToken, getMyTasks)
 
 router.post('/create', verifyToken, taskCreate)
 
