@@ -68,7 +68,7 @@ const tasksDetails = (req, res, next) => {
 
     Task
         .findById(task_id)
-        .then(reponse => res.status(201).json(reponse))
+        .then(reponse => res.status(200).json(reponse))
         .catch(err => next(err))
 }
 
