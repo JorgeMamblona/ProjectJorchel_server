@@ -23,8 +23,18 @@ const lisUsersById = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const findUserById = (req, res, next) => {
+    const { owner } = req.body
+    User
+        .findById(owner)
+        .then(respone => res.status(200).json(respone))
+        .catch(err => next(err))
+
+}
+
 
 module.exports = {
     listAllUsers,
-    lisUsersById
+    lisUsersById,
+    findUserById
 }
