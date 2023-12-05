@@ -3,7 +3,7 @@ const router = require("express").Router()
 const {
 
     create,
-    getProjectComments
+    getParentComments
 
 } = require("../controllers/comments.controllers")
 
@@ -12,6 +12,6 @@ const { verifyToken } = require('../middleware/verifyToken')
 
 router.post("/create", verifyToken, create)
 
-router.post("/getProjectComments", getProjectComments)
+router.post("/getParentComments", getParentComments)
 
 module.exports = router

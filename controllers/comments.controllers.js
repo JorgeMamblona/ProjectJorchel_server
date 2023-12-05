@@ -21,12 +21,13 @@ const create = (req, res, next) => {
         .catch(err => console.log(err))
 }
 
-const getProjectComments = (req, res, next) => {
+const getParentComments = (req, res, next) => {
 
     const { parent } = req.body
     console.log(parent)
     Comment
         .find({ parent })
+        .populate('owner')
         .then(response => res.json(response))
         .catch(err => console.log(err))
 
@@ -34,5 +35,5 @@ const getProjectComments = (req, res, next) => {
 
 module.exports = {
     create,
-    getProjectComments
+    getParentComments
 }
