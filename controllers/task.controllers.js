@@ -29,6 +29,7 @@ const getProjectTasksByState = (req, res, next) => {
 
     Task
         .find({ $and: [{ project }, { state }] })
+        .populate("participants")
         .then(response => res.json(response))
         .catch(err => next(err))
 }
@@ -123,6 +124,7 @@ const getMyTasks = (req, res, next) => {
 
     Task
         .find({ participants: user })
+        .populate("participants")
         .sort({ title: 1 })
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
