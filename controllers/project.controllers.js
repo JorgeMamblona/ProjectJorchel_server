@@ -60,6 +60,7 @@ const projectDetails = (req, res, next) => {
 
     Project
         .findById(project_id)
+        .populate("colaborators")
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
 }
@@ -114,6 +115,7 @@ const getMyProjects = (req, res, next) => {
 
     Project
         .find({ colaborators: user })
+        .populate("colaborators")
         .sort({ title: 1 })
         .then(response => res.status(200).json(response))
         .catch(err => next(err))
