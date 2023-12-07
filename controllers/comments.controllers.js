@@ -18,7 +18,7 @@ const create = (req, res, next) => {
             content
         })
         .then(response => res.status(201).json(response))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 }
 
 const getParentComments = (req, res, next) => {
@@ -29,7 +29,7 @@ const getParentComments = (req, res, next) => {
         .find({ parent })
         .populate('owner')
         .then(response => res.json(response))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 }
 
