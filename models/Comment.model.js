@@ -18,8 +18,8 @@ const commentSchema = new Schema({
     },
     content: {
         type: String,
-        required: true,
-        minlength: [2, 'Mínimo 2 caracteres']
+        required: [true, 'Please type something to comment'],
+        minlength: [2, '2 characters minimun length to comment']
     },
 
 },
