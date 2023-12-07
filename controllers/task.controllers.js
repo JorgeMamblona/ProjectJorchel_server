@@ -69,9 +69,7 @@ const tasksDetails = (req, res, next) => {
 
     Task
         .findById(task_id)
-        .populate("project")
-        .populate("owner")
-        .populate("participants")
+        .populate("project owner participants")
         .then(reponse => res.status(200).json(reponse))
         .catch(err => next(err))
 }
@@ -124,7 +122,7 @@ const getMyTasks = (req, res, next) => {
 
     Task
         .find({ participants: user })
-        .populate("participants")
+        .populate("project owner participants")
         .sort({ title: 1 })
         .then(response => res.status(200).json(response))
         .catch(err => next(err))

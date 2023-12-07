@@ -4,7 +4,7 @@ const projectSchema = new Schema({
 
     title: {
         type: String,
-        required: [true, 'Project must hace a title'],
+        required: [true, 'Project must have a title'],
         trim: true
     },
     description: {
