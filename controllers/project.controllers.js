@@ -1,4 +1,5 @@
 const Project = require("../models/Project.model")
+const Task = require('./../models/Task.model')
 
 // TODO: REVISAR OPORTUNIDADES DE SELECT Y SORT
 
@@ -104,11 +105,14 @@ const projectDelete = (req, res, next) => {
 
     const { project_id } = req.params
 
-    Project
-        .findByIdAndDelete(project_id)
+    Task
+        .find({ project: project_id })
+        .then(response => Task.deleteMany({ _id: { $in: response } }))
+        .then(() => Project.findByIdAndDelete(project_id))
         .then(() => res.sendStatus(200))
         .catch(err => next(err))
 }
+
 
 const getMyProjects = (req, res, next) => {
     const { _id: user } = req.payload
