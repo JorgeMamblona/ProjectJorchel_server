@@ -13,7 +13,7 @@ const signup = (req, res, next) => {
 
     if (password.length < 2) {
 
-        res.status(400).json({ message: 'Password must have at least 3 characters' })
+        res.status(400).json({ errorMessages: ['Password must have at least 3 characters'] })
         return
     }
 
@@ -22,7 +22,7 @@ const signup = (req, res, next) => {
         .then(foundUser => {
 
             if (foundUser) {
-                res.status(400).json({ message: 'User already exists' })
+                res.status(400).json({ errorMessages: ['User already exists'] })
                 return
             }
 
@@ -48,7 +48,7 @@ const userLogin = (req, res, next) => {
 
     if (email === '' || password === '') {
 
-        res.status(400).json({ message: 'Please, insert email and password' })
+        res.status(400).json({ errorMessages: ['Please, insert email and password'] })
         return
     }
 
@@ -57,7 +57,7 @@ const userLogin = (req, res, next) => {
         .then(foundUser => {
 
             if (!foundUser) {
-                res.status(400).json({ message: 'User not found' })
+                res.status(400).json({ errorMessages: ['Incorrect logIn info'] })
                 return
             }
 
@@ -75,7 +75,7 @@ const userLogin = (req, res, next) => {
                 res.json({ authToken })
 
             } else {
-                res.status(401)({ message: 'Incorrect password' })
+                res.status(401).json({ errorMessages: ['Incorrect logIn info'] })
             }
         })
         .catch(err => next(err))
